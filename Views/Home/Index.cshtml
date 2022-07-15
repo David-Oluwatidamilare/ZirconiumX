@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+    <div>
+        <img src="~/Content/banner.jpeg" height="350" width="950" />
+    </div>
+
+</div>
+<br />
+
+<div class="container">
+    <form method="get" asp-action="Index">
+        <p>
+            <input type="search" placeholder="Search for products, categories, SME's..." value="" style="height:35px; width:700px ;" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+
+        </p>
+    </form>
+</div>
+<div class="container">
+    <h2>Building & Construction</h2>
+    <p>Building & Construction covers the processes involved in delivering buildings, infrastructure, industrial facilities and associated activities through to the end of their life. It typically starts with planning, financing, and design, and continues until the asset is built and ready for use; construction also covers repairs and maintenance work, any works to expand, extend and improve the asset, and its eventual demolition, dismantling or decommissioning.</p>
+    <p>   @Html.ActionLink("Learn more >", "Construction", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+
+</div>
+<div class="container">
+    <h2>Agriculture</h2>
+    <p>Agriculture is the art and science of cultivating the soil, growing crops and raising livestock. It includes the preparation of plant and animal products for people to use and their distribution to markets. Agriculture provides most of the world's food and fabrics.</p>
+    <p>   @Html.ActionLink("Learn more >", "Agriculture", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Education</h2>
+    <p>Education is a purposeful activity directed at achieving certain aims, such as transmitting knowledge or fostering skills and character traits. These aims may include the development of understanding, rationality, kindness, and honesty.</p>
+    <p>   @Html.ActionLink("Learn more >", "Education", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Autos</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Autos", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Beauty</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Beauty", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+
+<div class="container">
+    <h2>Entertainment</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Entertainment", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Finance</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Finance", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Food & Dining</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Food", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Health and Medicine</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Hospitality", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Home and Offices</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Offices", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>IT</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "IT", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Manufacturing, Wholesale and Distribution</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Manufacturing", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Merchants</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Merchants", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Personal Care and Services</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Services", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Real Estate</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "RealEstate", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Retail</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Retail", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Support and Supplies</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Supplies", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Technology</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Technology", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Travel & Transportation</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Transportation", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>
+<div class="container">
+    <h2>Others</h2>
+    <p></p>
+    <p>   @Html.ActionLink("Learn more >", "Others", "Category", routeValues: null, htmlAttributes: new { @class = "btn btn-default" }) </p>
+</div>

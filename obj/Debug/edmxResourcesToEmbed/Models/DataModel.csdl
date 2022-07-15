@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZirconiumModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ZirconiumEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="businesses" EntityType="ZirconiumModel.business" />
+    <EntitySet Name="BusinessLoginDetails" EntityType="ZirconiumModel.BusinessLoginDetail" />
+    <EntitySet Name="BusinessRegistrations" EntityType="ZirconiumModel.BusinessRegistration" />
+    <EntitySet Name="categories" EntityType="ZirconiumModel.category" />
+    <EntitySet Name="ManagementTeams" EntityType="ZirconiumModel.ManagementTeam" />
+    <EntitySet Name="UserRegistrations" EntityType="ZirconiumModel.UserRegistration" />
+    <EntitySet Name="UserLoginDetails" EntityType="ZirconiumModel.UserLoginDetail" />
+  </EntityContainer>
+  <EntityType Name="business">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BusinessName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BusinessLoginDetail">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="EMail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ConfirmPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BusinessRegistration">
+    <Key>
+      <PropertyRef Name="RNumber" />
+    </Key>
+    <Property Name="BName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RNumber" Type="Int32" Nullable="false" />
+    <Property Name="TNumber" Type="Int32" />
+    <Property Name="CSize" Type="Int32" />
+    <Property Name="YEstablishment" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="BDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SPosition1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="SEmail1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SPhoneNo1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="BEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ManagementTeam">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRegistration">
+    <Key>
+      <PropertyRef Name="phoneNo" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phoneNo" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="confirm_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="UserLoginDetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EMail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ConfirmPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

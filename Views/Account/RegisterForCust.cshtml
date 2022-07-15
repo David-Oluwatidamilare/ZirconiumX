@@ -1,0 +1,102 @@
+﻿
+@model ZirconiumX.Models.UserRegisterViewModel
+
+<style>
+
+    #_bus_nav {
+        display: float;
+    }
+
+        #_bus_nav h2 {
+            float: left;
+        }
+
+        #_bus_nav #loginCust {
+            margin-top: 24px;
+            float: right;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+    .clearfix::after {
+        clear: both;
+        content: "";
+    }
+</style>
+
+<div id="_bus_nav" class="clearfix">
+    <h2>@ViewBag.Title</h2>
+    @Html.ActionLink("Already have an Account?", "Login", "Account", new { @id = "loginCust" })
+</div>
+
+
+
+@using (Html.BeginForm("RegisterForCust", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Create a Customer account</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CName, new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CPhoneNo, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CPhoneNo, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CAddress, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CAddress, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CEmail, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CEmail, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CPassword, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,437 @@
+﻿@{
+    ViewBag.Title = "BusinessViews";
+}
+
+
+<style>
+
+    #bus_parent {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: 70% 30%;
+        column-gap: 16px;
+    }
+
+    #bus_info {
+        background-color: lightgray;
+        border: 0px solid black;
+        border-radius: 10px;
+        padding: 8px;
+        display: grid;
+        grid-template-rows: 300px 1fr;
+        row-gap: 16px;
+    }
+
+
+    #bus_aside {
+        border: 0px solid black;
+        border-radius: 10px;
+        display: grid;
+        grid-template-rows: 1fr 300px 1fr;
+        row-gap: 16px;
+
+    }
+
+    #bus_mgt_team {
+        background-color: white;
+        display: gris;
+        grid-template-rows: 50px 1fr;
+    }
+
+    #bus_mgt_team #bus_mgt_team_header{
+        margin: 8px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+        #bus_mgt_team #bus_mgt_team_member {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            background-color: white;
+            margin: 8px;
+        }
+
+            #bus_mgt_team #bus_mgt_team_member img {
+                margin: 6px;
+                width: 60px;
+                clip-path: circle();
+            }
+
+    #bus_comment {
+        background-color: white;
+        overflow-y: scroll;
+    }
+
+        #bus_comment::-webkit-scrollbar {
+            width: 12px; /* width of the entire scrollbar */
+        }
+
+        #bus_comment::-webkit-scrollbar-track {
+            background: #f6efef; /* color of the tracking area */
+        }
+
+        #bus_comment::-webkit-scrollbar-thumb {
+            background-color: gray; /* color of the scroll thumb */
+            border-radius: 20px; /* roundness of the scroll thumb */
+            border: 3px #f6efef; /* creates padding around scroll thumb */
+        }
+
+    #bus_comment_user {
+        margin: 8px;
+        display: grid;
+        grid-template-rows: 50px 80px;
+    }
+
+    #bus_comment_user_header {
+        background-color: #f6efef;
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+    }
+
+        #bus_comment_user_header img {
+            margin: 6px;
+            width: 40px;
+            clip-path: circle();
+        }
+
+
+        #bus_comment_user_header p {
+            margin: 6px;
+            align-self: center;
+        }
+
+    #bus_comment_user_text {
+        background-color: white;
+        padding: 8px;
+    }
+
+    #bus_comment_entry {
+        display: grid;
+        grid-template-rows: 3fr 1fr;
+        background-color: #f6efef;
+    }
+
+        #bus_comment_entry #bus_comment_entry_text_area {
+            margin: 0 8px 8px 8px;
+            border-width: 0;
+            padding: 6px;
+            resize: none;
+            max-width: 100%;
+            font-size: 18px;
+        }
+
+            #bus_comment_entry #bus_comment_entry_text_area:focus {
+                outline: none;
+            }
+
+        #bus_comment_entry #bus_comment_entry_post_btn {
+            background-color: #041469;
+            color: lightgray;
+            margin: 0px;
+            margin-left: calc(100% - 108px);
+            width: 50px;
+            height: 40px;
+        }
+
+    #bus_info_header {
+        background-color: white;
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        column-gap: 16px;
+    }
+
+        #bus_info_header #bus_info_header_logo img {
+            width: 100%;
+            padding: 8px;
+            margin-top: 16px;
+        }
+
+        #bus_info_header #bus_info_header_info {
+            padding: 8px 8px 8px 0;
+        }
+
+            #bus_info_header #bus_info_header_info ul {
+                padding: 0;
+            }
+
+
+                #bus_info_header #bus_info_header_info ul li {
+                    margin-right: 16px;
+                    display: inline;
+                    list-style-type: none;
+                }
+
+            #bus_info_header #bus_info_header_info > img {
+                width: 50px;
+            }
+
+    #bus_info_header_info_summary p:nth-child(2) {
+        background-color: #f6efef;
+        border-radius: 5px;
+        padding: 8px;
+        text-align: justify;
+    }
+
+    .ul_container {
+        display: inline;
+        justify-content: normal;
+    }
+
+    #bus_info_details {
+        background-color: white;
+    }
+
+    #bus_info_details_tabs .ul_container {
+    }
+
+        #bus_info_details_tabs .ul_container ul {
+            padding: 0;
+            margin: 16px 10px;
+        }
+
+            #bus_info_details_tabs .ul_container ul li {
+                display: inline;
+                padding: 0;
+            }
+
+                #bus_info_details_tabs .ul_container ul li a {
+                    padding: 8px 36px;
+                    background-color: white;
+                    color: #041469;
+                }
+
+                    #bus_info_details_tabs .ul_container ul li a:hover {
+                        text-decoration: #f6efef;
+                        color: #041469;
+                        background-color: #f6efef;
+                        border-radius: 5px;
+                    }
+
+
+    #bus_info_details_contents {
+        margin: 8px;
+        background-color: white;
+        border-radius: 5px;
+        padding: 8px;
+        text-align: justify;
+    }
+</style>
+
+<div id="bus_parent">
+    <div id="bus_info">
+        <div id="bus_info_header">
+            <div id="bus_info_header_logo">
+                <img src="~/images/tbll2-n.png" />
+            </div>
+            <div id="bus_info_header_info">
+                @if (ViewBag.MyModel != null)
+                {
+                    @*<h2>The Builders Link</h2>*@
+                    <h2>@ViewBag.MyModel.BName</h2>
+                    @*<p>No 2 Zuma street, off Pompomari junction.</p>*@
+                    <p>@ViewBag.MyModel.BAddress</p>
+                    <div id="bus_info_header_info_summary">
+                        <h3>Summary</h3>
+                        @*<p>The Buillders Link Limited exist to mitigate against challenges associate with the needs arising from construction and building activities.</p>*@
+                        <p>@ViewBag.MyModel.BDescription</p>
+                    </div>
+                }
+                else
+                {
+                    <h2>Company Name</h2>
+                    <p>Company Address</p>
+                    <div id="bus_info_header_info_summary">
+                        <h3>Summary</h3>
+                        <p>Company Description</p>
+                    </div>
+                }
+                <div class="ul_container">
+                    <ul>
+                        <li>
+                            <img src="~/Content/facebook.png" style="width: 30px;" />
+                        </li>
+                        <li>
+                            <img src="~/Content/twitter.png" style="width: 30px;" />
+                        </li>
+                        <li>
+                            <img src="~/Content/linkedin.png" style="width: 30px;" />
+                        </li>
+                        <li>
+                            <img src="~/Content/whatsapp.png" style="width: 30px;" />
+                        </li>
+                        <li>
+                            <img src="~/Content/instagram.png" style="width: 30px;" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="bus_info_details">
+            <div id="bus_info_details_tabs">
+                <div class="ul_container">
+                    <ul>
+                        <li>  <a> Overview  </a> </li>
+                        <li>
+                            <a>
+                                Products
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                Events
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                More
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="bus_info_details_contents">
+                <p>
+                    The builders link is an indigenous construction company that specializes in a range of services ranging from architechture, to selling building materials and services as well as safety wears. The company was founded in 2020 and...
+                </p>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div id="bus_aside">
+        <div id="bus_mgt_team">
+            <div id="bus_mgt_team_header">
+                <p>
+                    Management Team
+                </p>
+            </div>
+            <div id="bus_mgt_team_member">
+                <img src="~/Content/user.png"
+                     alt="Avatar image">
+                <div>
+                    <p>Ciroma Chukwuma Adekunle</p>
+                    <p>Managing Director/Chief Executive</p>
+                </div>
+            </div>
+            <div id="bus_mgt_team_member">
+                <img src="~/Content/user.png"
+                     alt="Avatar image">
+                <div>
+                    <p>Abba Bukar</p>
+                    <p>Chief Operating Officer</p>
+                </div>
+            </div>
+            <div id="bus_mgt_team_member">
+                <img src="~/Content/user.png"
+                     alt="Avatar image">
+                <div>
+                    <p>Kilingdat Abraham</p>
+                    <p>Senior Sales Executive</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="bus_comment">
+            <div id="bus_comment_user">
+                <div id="bus_comment_user_header">
+                    <img src="~/Content/user.png"
+                         alt="Avatar image">
+                    <p>Omolayo Olatunji</p>
+                </div>
+                <div id="bus_comment_user_text">
+                    <p>
+                        The Builders link is the best indigenous construction company I have worked with in my entire life.
+                    </p>
+
+                </div>
+            </div>
+            <div id="bus_comment_user">
+                <div id="bus_comment_user_header">
+                    <img src="~/Content/user.png"
+                         alt="Avatar image">
+                    <p>Opeyemi</p>
+                </div>
+                <div id="bus_comment_user_text">
+                    <p>
+                        Their services are superb.
+                    </p>
+
+                </div>
+            </div>
+            <div id="bus_comment_user">
+                <div id="bus_comment_user_header">
+                    <img src="~/Content/user.png"
+                         alt="Avatar image">
+                    <p>Omowunmi</p>
+                </div>
+                <div id="bus_comment_user_text">
+                    <p>
+                        These people ran off with 10 bags of cement from my site.
+                    </p>
+
+                </div>
+            </div>
+            <div id="bus_comment_user">
+                <div id="bus_comment_user_header">
+                    <img src="~/Content/user.png"
+                         alt="Avatar image">
+                    <p>Abdulhameed</p>
+                </div>
+                <div id="bus_comment_user_text">
+                    <p>
+                        Their boss snatched my wife.
+                    </p>
+
+                </div>
+            </div>
+            <div id="bus_comment_user">
+                <div id="bus_comment_user_header">
+                    <img src="~/Content/user.png"
+                         alt="Avatar image">
+                    <p>Oluwatidamilare</p>
+                </div>
+                <div id="bus_comment_user_text">
+                    <p>
+                        They can do better, but their services are just above average.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="bus_comment_entry">
+            <textarea id="bus_comment_entry_text_area" name="bus_comment_entry_text_area"
+                      placeholder="Tell us your story..."></textarea>
+
+            <button id="bus_comment_entry_post_btn" type="button" click="alert('review saved!')">Post</button>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    const ta = document.getElementById("bus_comment_entry_text_area")
+    const btn = document.getElementById("bus_comment_entry_post_btn")
+
+    btn.addEventListener("click", () => {
+        alert(ta.value)
+    })
+</script>
+
+
+

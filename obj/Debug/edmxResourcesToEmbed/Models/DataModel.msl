@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ZirconiumModelStoreContainer" CdmEntityContainer="ZirconiumEntities">
+    <EntitySetMapping Name="businesses">
+      <EntityTypeMapping TypeName="ZirconiumModel.business">
+        <MappingFragment StoreEntitySet="businesses">
+          <ScalarProperty Name="BusinessDescription" ColumnName="BusinessDescription" />
+          <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessLoginDetails">
+      <EntityTypeMapping TypeName="ZirconiumModel.BusinessLoginDetail">
+        <MappingFragment StoreEntitySet="BusinessLoginDetails">
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessRegistrations">
+      <EntityTypeMapping TypeName="ZirconiumModel.BusinessRegistration">
+        <MappingFragment StoreEntitySet="BusinessRegistrations">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="BEmail" ColumnName="BEmail" />
+          <ScalarProperty Name="SPhoneNo1" ColumnName="SPhoneNo1" />
+          <ScalarProperty Name="SEmail1" ColumnName="SEmail1" />
+          <ScalarProperty Name="SPosition1" ColumnName="SPosition1" />
+          <ScalarProperty Name="SName" ColumnName="SName" />
+          <ScalarProperty Name="BDescription" ColumnName="BDescription" />
+          <ScalarProperty Name="YEstablishment" ColumnName="YEstablishment" />
+          <ScalarProperty Name="CSize" ColumnName="CSize" />
+          <ScalarProperty Name="TNumber" ColumnName="TNumber" />
+          <ScalarProperty Name="RNumber" ColumnName="RNumber" />
+          <ScalarProperty Name="BType" ColumnName="BType" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="BAddress" ColumnName="BAddress" />
+          <ScalarProperty Name="BName" ColumnName="BName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="ZirconiumModel.category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="category1" ColumnName="category" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManagementTeams">
+      <EntityTypeMapping TypeName="ZirconiumModel.ManagementTeam">
+        <MappingFragment StoreEntitySet="ManagementTeam">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRegistrations">
+      <EntityTypeMapping TypeName="ZirconiumModel.UserRegistration">
+        <MappingFragment StoreEntitySet="UserRegistrations">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="confirm_password" ColumnName="confirm_password" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLoginDetails">
+      <EntityTypeMapping TypeName="ZirconiumModel.UserLoginDetail">
+        <MappingFragment StoreEntitySet="UserLoginDetails">
+          <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

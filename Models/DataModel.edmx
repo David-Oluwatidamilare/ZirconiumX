@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ZirconiumModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="businesses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessName" Type="varchar" MaxLength="50" />
+          <Property Name="BusinessDescription" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="BusinessLoginDetails">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="EMail" Type="varchar" MaxLength="40" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="ConfirmPassword" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="BusinessRegistrations">
+          <Key>
+            <PropertyRef Name="RNumber" />
+          </Key>
+          <Property Name="BName" Type="varchar" MaxLength="50" />
+          <Property Name="BAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="BType" Type="varchar" MaxLength="50" />
+          <Property Name="RNumber" Type="int" Nullable="false" />
+          <Property Name="TNumber" Type="int" />
+          <Property Name="CSize" Type="int" />
+          <Property Name="YEstablishment" Type="varchar" MaxLength="4" />
+          <Property Name="BDescription" Type="varchar" MaxLength="250" />
+          <Property Name="SName" Type="varchar" MaxLength="50" />
+          <Property Name="SPosition1" Type="varchar" MaxLength="25" />
+          <Property Name="SEmail1" Type="varchar" MaxLength="50" />
+          <Property Name="SPhoneNo1" Type="varchar" MaxLength="11" />
+          <Property Name="BEmail" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="ConfirmPassword" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="ManagementTeam">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Position" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="30" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="11" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Zirconium.dbo.UserLoginDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserLoginDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="30" />
+          <Property Name="EMail" Type="varchar" MaxLength="40" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="ConfirmPassword" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UserRegistrations">
+          <Key>
+            <PropertyRef Name="phoneNo" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="phoneNo" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="confirm_password" Type="varchar" MaxLength="50" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ZirconiumModelStoreContainer">
+          <EntitySet Name="businesses" EntityType="Self.businesses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusinessLoginDetails" EntityType="Self.BusinessLoginDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusinessRegistrations" EntityType="Self.BusinessRegistrations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManagementTeam" EntityType="Self.ManagementTeam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRegistrations" EntityType="Self.UserRegistrations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLoginDetails" EntityType="Self.UserLoginDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserLoginDetails].[id] AS [id], 
+    [UserLoginDetails].[Username] AS [Username], 
+    [UserLoginDetails].[EMail] AS [EMail], 
+    [UserLoginDetails].[Password] AS [Password], 
+    [UserLoginDetails].[ConfirmPassword] AS [ConfirmPassword]
+    FROM [dbo].[UserLoginDetails] AS [UserLoginDetails]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ZirconiumModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ZirconiumEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="businesses" EntityType="ZirconiumModel.business" />
+          <EntitySet Name="BusinessLoginDetails" EntityType="ZirconiumModel.BusinessLoginDetail" />
+          <EntitySet Name="BusinessRegistrations" EntityType="ZirconiumModel.BusinessRegistration" />
+          <EntitySet Name="categories" EntityType="ZirconiumModel.category" />
+          <EntitySet Name="ManagementTeams" EntityType="ZirconiumModel.ManagementTeam" />
+          <EntitySet Name="UserRegistrations" EntityType="ZirconiumModel.UserRegistration" />
+          <EntitySet Name="UserLoginDetails" EntityType="ZirconiumModel.UserLoginDetail" />
+        </EntityContainer>
+        <EntityType Name="business">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BusinessLoginDetail">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="EMail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BusinessRegistration">
+          <Key>
+            <PropertyRef Name="RNumber" />
+          </Key>
+          <Property Name="BName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RNumber" Type="Int32" Nullable="false" />
+          <Property Name="TNumber" Type="Int32" />
+          <Property Name="CSize" Type="Int32" />
+          <Property Name="YEstablishment" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="BDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SPosition1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="SEmail1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SPhoneNo1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="BEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ManagementTeam">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRegistration">
+          <Key>
+            <PropertyRef Name="phoneNo" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phoneNo" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="confirm_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="UserLoginDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ZirconiumModelStoreContainer" CdmEntityContainer="ZirconiumEntities">
+          <EntitySetMapping Name="businesses">
+            <EntityTypeMapping TypeName="ZirconiumModel.business">
+              <MappingFragment StoreEntitySet="businesses">
+                <ScalarProperty Name="BusinessDescription" ColumnName="BusinessDescription" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessLoginDetails">
+            <EntityTypeMapping TypeName="ZirconiumModel.BusinessLoginDetail">
+              <MappingFragment StoreEntitySet="BusinessLoginDetails">
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessRegistrations">
+            <EntityTypeMapping TypeName="ZirconiumModel.BusinessRegistration">
+              <MappingFragment StoreEntitySet="BusinessRegistrations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="BEmail" ColumnName="BEmail" />
+                <ScalarProperty Name="SPhoneNo1" ColumnName="SPhoneNo1" />
+                <ScalarProperty Name="SEmail1" ColumnName="SEmail1" />
+                <ScalarProperty Name="SPosition1" ColumnName="SPosition1" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="BDescription" ColumnName="BDescription" />
+                <ScalarProperty Name="YEstablishment" ColumnName="YEstablishment" />
+                <ScalarProperty Name="CSize" ColumnName="CSize" />
+                <ScalarProperty Name="TNumber" ColumnName="TNumber" />
+                <ScalarProperty Name="RNumber" ColumnName="RNumber" />
+                <ScalarProperty Name="BType" ColumnName="BType" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="BAddress" ColumnName="BAddress" />
+                <ScalarProperty Name="BName" ColumnName="BName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="ZirconiumModel.category">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="category1" ColumnName="category" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManagementTeams">
+            <EntityTypeMapping TypeName="ZirconiumModel.ManagementTeam">
+              <MappingFragment StoreEntitySet="ManagementTeam">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRegistrations">
+            <EntityTypeMapping TypeName="ZirconiumModel.UserRegistration">
+              <MappingFragment StoreEntitySet="UserRegistrations">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="confirm_password" ColumnName="confirm_password" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLoginDetails">
+            <EntityTypeMapping TypeName="ZirconiumModel.UserLoginDetail">
+              <MappingFragment StoreEntitySet="UserLoginDetails">
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

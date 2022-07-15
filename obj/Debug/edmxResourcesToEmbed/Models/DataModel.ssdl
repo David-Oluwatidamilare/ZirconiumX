@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZirconiumModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="businesses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusinessName" Type="varchar" MaxLength="50" />
+    <Property Name="BusinessDescription" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="BusinessLoginDetails">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="EMail" Type="varchar" MaxLength="40" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="ConfirmPassword" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="BusinessRegistrations">
+    <Key>
+      <PropertyRef Name="RNumber" />
+    </Key>
+    <Property Name="BName" Type="varchar" MaxLength="50" />
+    <Property Name="BAddress" Type="varchar" MaxLength="50" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
+    <Property Name="BType" Type="varchar" MaxLength="50" />
+    <Property Name="RNumber" Type="int" Nullable="false" />
+    <Property Name="TNumber" Type="int" />
+    <Property Name="CSize" Type="int" />
+    <Property Name="YEstablishment" Type="varchar" MaxLength="4" />
+    <Property Name="BDescription" Type="varchar" MaxLength="250" />
+    <Property Name="SName" Type="varchar" MaxLength="50" />
+    <Property Name="SPosition1" Type="varchar" MaxLength="25" />
+    <Property Name="SEmail1" Type="varchar" MaxLength="50" />
+    <Property Name="SPhoneNo1" Type="varchar" MaxLength="11" />
+    <Property Name="BEmail" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="ConfirmPassword" Type="varchar" MaxLength="50" />
+    <Property Name="CategoryID" Type="int" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category" Type="varchar" MaxLength="50" />
+    <Property Name="CategoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="ManagementTeam">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Position" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="30" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="11" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Zirconium.dbo.UserLoginDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UserLoginDetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="30" />
+    <Property Name="EMail" Type="varchar" MaxLength="40" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="ConfirmPassword" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="UserRegistrations">
+    <Key>
+      <PropertyRef Name="phoneNo" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="address" Type="varchar" MaxLength="50" />
+    <Property Name="phoneNo" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="confirm_password" Type="varchar" MaxLength="50" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ZirconiumModelStoreContainer">
+    <EntitySet Name="businesses" EntityType="Self.businesses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BusinessLoginDetails" EntityType="Self.BusinessLoginDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BusinessRegistrations" EntityType="Self.BusinessRegistrations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ManagementTeam" EntityType="Self.ManagementTeam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRegistrations" EntityType="Self.UserRegistrations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLoginDetails" EntityType="Self.UserLoginDetails" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UserLoginDetails].[id] AS [id], 
+    [UserLoginDetails].[Username] AS [Username], 
+    [UserLoginDetails].[EMail] AS [EMail], 
+    [UserLoginDetails].[Password] AS [Password], 
+    [UserLoginDetails].[ConfirmPassword] AS [ConfirmPassword]
+    FROM [dbo].[UserLoginDetails] AS [UserLoginDetails]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

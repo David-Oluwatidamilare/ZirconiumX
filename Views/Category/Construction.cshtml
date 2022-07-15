@@ -1,0 +1,56 @@
+﻿@using ZirconiumX.Models
+
+@{
+    ViewBag.Title = "Construction";
+
+}
+
+<h2>Construction</h2>
+
+<div class="container">
+    <div>
+        <img src="~/images/construction.png" height="350" width="950" />
+    </div>
+
+</div>
+<br />
+
+<div class="container">
+    <div class="caption">
+        <div class=" jumbotron">
+            <p>
+                There are different types of construction work that can fit into the construction industry sector. The three main categories include:
+                General construction: Those who construct buildings, residential properties or houses are typically completing general construction projects.
+                Specialized construction: This type of construction typically requires more expertise in a certain aspect of construction, such as woodworking, concrete or electrical construction.
+                Heavy construction: Employees who build bridges or roads and construct other larger construction tasks typically fall into the heavy construction category.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+    @{
+        ZirconiumEntities db = new ZirconiumEntities();
+
+        foreach (var br in db.BusinessRegistrations)
+        {
+            if (br.Category.ToLower().Contains("construction"))
+            {
+            <div class="col-md-4">
+                <img src="~/images/tbll2-n.png" />
+                <h4>@br.BName</h4>
+                <div class=" panel">
+                    <p>@br.BDescription</p>
+                    
+                    <p>@Html.ActionLink("Learn more >", "BusinessViews", "Account", routeValues: new { id = br.ID }, htmlAttributes: new { @class = "btn btn-default" }) </p>
+
+                </div>
+
+            </div>
+                }
+            }
+        }
+
+</div>

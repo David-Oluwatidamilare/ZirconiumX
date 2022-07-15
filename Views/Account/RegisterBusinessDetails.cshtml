@@ -1,0 +1,155 @@
+﻿@using ZirconiumX.Models
+@model BusinessDetailsViewModel
+
+<style>
+
+    #_bus_nav {
+        display: float;
+    }
+
+        #_bus_nav h2 {
+            float: left;
+        }
+
+        #_bus_nav #loginBus {
+            margin-top: 24px;
+            float: right;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+    .clearfix::after {
+        clear: both;
+        content: "";
+    }
+
+    .center {
+        margin: 0 20%;
+    }
+</style>
+
+<div id="_bus_nav" class="clearfix">
+    <h2>@ViewBag.Title</h2>
+    @Html.ActionLink("Already have an Account?", "Login", "Account", new { @id = "loginBus" })
+</div>
+
+@using (Html.BeginForm("RegisterBusinessDetails", "Account", FormMethod.Post, new { @class = "form-horizontal center", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Fill in Business Related Information</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BName, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Category, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @*@Html.TextBoxFor(m => m.Category, new { @class = "form-control" })*@
+
+            @*<label for="Category"><b>Category</b></label>*@
+
+            <select name="Category" id="Category">
+                <option value="Autos">Autos</option>
+                <option value="Beauty">Beauty</option>
+                <option value="Building and Construction">Building and Construction</option>
+                <option value="Education">Education</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Finance">Finance</option>
+                <option value="Food & Dining">Food & Dining</option>
+                <option value="Health and Medicine">Health and Medicine</option>
+                <option value="Home and Offices">Home and Offices</option>
+                <option value="IT">IT</option>
+                <option value="Manufacturing, Wholesale and Distribution">Manufacturing, Wholesale and Distribution</option>
+                <option value="Merchants (Retail)">Merchants (Retail)</option>
+                <option value="Personal Care and Services">Personal Care and Services</option>
+                <option value="Real Estate">Real Estate</option>
+                <option value="Retail">Retail</option>
+                <option value="Support and Supplies">Support and Supplies</option>
+                <option value="Technology">Technology</option>
+                <option value="Travel & Transportation">Travel & Transportation</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BAddress, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BAddress, new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BType, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+
+            @*<select name="Business Type" id="BusinessType">
+                    <option value="Sole Proprietorship">Sole Proprietorship</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="Limited Liability Company">Limited Liability Company</option>
+                    <option value="Corporation">Corporation</option>
+                </select>*@
+
+            @Html.DropDownListFor(m => m.BType,
+             new List<SelectListItem>
+             {
+                    new SelectListItem{Text="Sole Proprietorship", Value="Sole Proprietorship"},
+                    new SelectListItem{Text="Partnership", Value="Partnership"},
+                    new SelectListItem{Text="Limited Liability Company", Value="Limited Liability Company"},
+                    new SelectListItem{Text="Corporation", Value="Corporation"}
+             }
+             )
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.RNumber, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.TNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.TNumber, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CSize, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CSize, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.YEstablishment, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.YEstablishment, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BDescription, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.BDescription, new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Next" />
+        </div>
+    </div>
+}

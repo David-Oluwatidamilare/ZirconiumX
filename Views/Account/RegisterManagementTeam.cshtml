@@ -1,0 +1,54 @@
+﻿@using ZirconiumX.Models
+@model ManagementTeamViewModel
+
+<style>
+
+    .center {
+        margin: 0 20%;
+    }
+</style>
+<h3 style="text-align: center;">Management Team</h3>
+<hr />
+
+@using (Html.BeginForm("RegisterManagementTeam", "Account", FormMethod.Post, new { @class = "form-horizontal center", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Fill in Management Team Information</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.SName, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SPosition, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.SPosition, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SEmail, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.SEmail, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.SPhoneNo, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.SPhoneNo, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Next" />
+        </div>
+    </div>
+}
